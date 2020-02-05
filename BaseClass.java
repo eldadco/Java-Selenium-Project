@@ -2,10 +2,11 @@ package com.seleniumProj;
 
 
 public class BaseClass {
-  protected SeleniumInfraStructure selenium;
+    protected final SeleniumInfraStructure seleniumInfra;
+
     public BaseClass()
     {
-        this.selenium = new SeleniumInfraStructure();
+        this.seleniumInfra = new SeleniumInfraStructure();
 
     }
 }

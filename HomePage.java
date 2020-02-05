@@ -14,12 +14,13 @@ public class HomePage {
         this.seleniumInfra = selenium;
     }
 
-    //The function navigate to home page
+    //The function is open home page
     public void openWebSite()
     {
         this.seleniumInfra.getUrl("http://automationpractice.com/index.php");
 
     }
+
     public void navigateToHomePage()
     {
         this.seleniumInfra.clickElement("xpath","//img[@class='logo img-responsive']",null);
@@ -27,7 +28,7 @@ public class HomePage {
 
     public boolean validateNavigateToHomePage()
     {
-        if(this.seleniumInfra.driver.getCurrentUrl().contains("index.php"))
+        if(this.seleniumInfra.urlValidation("index.php"))
         {
             return true;
         }
@@ -36,7 +37,6 @@ public class HomePage {
             return false;
         }
     }
-
 
     //The function done search according to the input(item)
     public void search(String item)
@@ -78,7 +78,7 @@ public class HomePage {
         }
 
         catch (Exception excep) {
-            System.out.println("Home page exception" + " " + excep.getMessage());
+//            System.out.println("Home page exception" + " " + excep.getMessage());
                 return " ";
         }
     }
@@ -119,6 +119,11 @@ public class HomePage {
         }
         else
         {
+            if(this.seleniumInfra.isElementExists("xpath","//p[@class='alert alert-warning']"))
+            {
+                System.out.println(this.seleniumInfra.getTextFromElement("xpath","//p[@class='alert alert-warning']",null));
+                return false;
+            }
             System.out.println(Color.red+"The search results title is not match to the input "+ input +" != "+this.getSearchTitle().toLowerCase());
 
         }

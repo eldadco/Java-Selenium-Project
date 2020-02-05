@@ -7,8 +7,9 @@ import java.util.LinkedList;
 public class MainClass {
     public static void main(String[]args) {
         HomePageTest homeTest = new HomePageTest();
-        homeTest.searchTest();
+        homeTest.searchTest("Dress");
         homeTest.navigateToHomePageTest();
+        homeTest.negativeSearchTest();
 //        homeTest.stabilitySearchTest();
 
     }

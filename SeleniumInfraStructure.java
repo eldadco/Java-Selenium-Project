@@ -37,6 +37,29 @@ public class SeleniumInfraStructure {
         }
     }
 
+    public Boolean urlValidation(String url)
+    {
+        try {
+            if (this.driver.getCurrentUrl().contains(url)) {
+                System.out.println("SeleniumInfra succsess message : the current url is contain the url-param");
+                return true;
+            }
+            else
+            {
+                System.out.println("SeleniumInfra failed message : the current url is not contain the url-param");
+                return false;
+            }
+
+        }
+        catch(Exception excep)
+        {
+            System.out.println("SeleniumInfra exception message : "+excep.toString());
+          return false;
+        }}
+
+
+
+
     public WebElement findElem(String locatorType, String locatorValue) {
 
         try {
@@ -57,17 +80,18 @@ public class SeleniumInfraStructure {
         }
         catch (InvalidSelectorException excep)
         {
-            System.out.println("Selenium-infra error : \t"+excep.toString());
+            System.out.println("Selenium-infra error : \t"+ "invalid selector exception by locatorType: "+ locatorType + " and locator value : " + locatorValue);
         }
         catch (NoSuchElementException excep)
         {
-            System.out.println("Selenium-infra error : \t"+excep.toString());
+            System.out.println("Selenium-infra error : No such Element Exception by locatorType: "
+                    + locatorType + " and locator value : " + locatorValue);
 
         }
         catch(ElementNotVisibleException excep)
         {
 
-            System.out.println("Selenium-infra error : \t"+excep.toString());
+            System.out.println("Selenium-infra error : element not visible exception by locatorType: "+ locatorType + " and locator value : " + locatorValue);
         }
         return null;
 
